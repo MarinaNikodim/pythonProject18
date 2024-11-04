@@ -7,7 +7,7 @@ def add_everything_up(a, b):
             result = str(a) + str(b)
             return result
     except TypeError as exc:
-        return f'Error {exc}'
+        return f'Вы складываете неверный тип данных! {exc}'
 
 
 print(add_everything_up(123.456, 'строка'))
