@@ -1,6 +1,6 @@
 def personal_sum(*numbers):
-    if len(numbers) == 1 and not isinstance(numbers[0], (tuple, list)):
-        print(f'В {numbers} записан некорректный тип данных. Ожидалась коллекция.')
+    # if len(numbers) == 1 and not isinstance(numbers[0], (tuple, list)):
+    #     print(f'В {numbers} записан некорректный тип данных. Ожидалась коллекция.')
 
     result = 0
     incorrect_data = []
@@ -22,20 +22,21 @@ def personal_sum(*numbers):
 
 
 def calculate_average(*numbers):
+    if len(numbers) == 1 and not isinstance(numbers[0], (tuple, list)):
+        print(f'В {numbers} записан некорректный тип данных')
+        return None
     try:
         total_sum, incorrect_data = personal_sum(*numbers)
         count = len(numbers) - incorrect_data
 
         if count == 0:
-            raise ZeroDivisionError(f'НЕЛЬЗЯ ДЕЛИТЬ НА НОЛЬ!!!')
+            print(f'НЕЛЬЗЯ ДЕЛИТЬ НА НОЛЬ!!!')
+            return 0
         else:
             return total_sum / count
     except ZeroDivisionError:
         print(f'Деление на ноль')
         return 0
-    except TypeError as exc:
-        print(f'В {numbers} записан некорректный тип данных {exc}')
-        return None
 
 
 print(f'Результат 1: {calculate_average('1', '2', '3')}') # Строка перебирается, но каждый символ - строковый тип
